@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>Add food</h1>
+            <form [formGroup]="foodadd" (ngSubmit)="data()">
+                <div class="form-group">
+                    <label >Food Name</label>
+                    <input [class.is-invalid]="foodadd.get('food_name').invalid && foodadd.get('food_name').touched" class="form-control" type="text" formControlName = 'food_name'>
+                    <ng-container *ngIf="(foodadd.get('food_name').touched ||foodadd.get('food_name').dirty) && foodadd.get('food_name').invalid">
+                        <div *ngIf="foodadd.get('food_name').errors?.required">
+                           <small class="text-danger">Food Name is required</small>  
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="form-group">
+                    <label >cost</label>
+                    <input class="form-control" [class.is-invalid]="foodadd.get('cost').invalid && foodadd.get('cost').touched" type="text" formControlName = 'cost'>
+                    <ng-container *ngIf="(foodadd.get('cost').touched ||foodadd.get('cost').dirty) && foodadd.get('cost').invalid">
+                        <div *ngIf="foodadd.get('cost').errors?.required">
+                           <small class="text-danger">Cost is required</small>  
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="form-group">
+                    <label >Upload Image</label>
+                    <div>
+                        <input class="form-control" type="file" name="image" (change)="selectImage($event)" />
+                      </div>
+                      <br>
+                      <div>
+                        <button class="btn btn-primary mr-1" (click)="onSubmit()">Upload</button>
+                      </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary mr-1" [disabled]="foodadd.invalid">add Food</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

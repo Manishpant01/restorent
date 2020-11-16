@@ -1,0 +1,6 @@
+<app-header *ngIf="router.url !== '/admin' && router.url !== '/adminDashboaed' && router.url !== '/addfood' && router.url !== '/getCustomers_details' && router.url !== '/getReservation_details'"></app-header>
+<app-banner *ngIf="router.url == '/'"></app-banner>
+<app-aboutus *ngIf="router.url == '/'"></app-aboutus>
+<app-contactus *ngIf="router.url == '/'"></app-contactus>
+<router-outlet></router-outlet>
+<app-footer *ngIf="router.url !== '/admin' && router.url !== '/adminDashboaed'&& router.url !== '/addfood' && router.url !== '/getCustomers_details' && router.url !== '/getReservation_details'"></app-footer>
